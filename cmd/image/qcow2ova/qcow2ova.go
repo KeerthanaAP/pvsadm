@@ -255,13 +255,6 @@ Qcow2 images location:
 		}
 		klog.Info("Conversion completed")
 
-		klog.Infof("Resizing the image %s to %dG", rawImg, opt.ImageSize)
-		err = qemuImgResize("-f", "raw", rawImg, fmt.Sprintf("%dG", opt.ImageSize))
-		if err != nil {
-			return err
-		}
-		klog.Info("Resize completed")
-
 		klog.Info("Preparing the image")
 		err = prep.Prepare4capture(mnt, rawImg, opt.ImageDist, opt.RHNUser, opt.RHNPassword, opt.OSPassword)
 		if err != nil {
